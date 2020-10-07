@@ -1,5 +1,9 @@
 set FLASK_APP=flaskblog.py
 
-run flask
+flask run
 
 http://127.0.0.1:5000/
+
+To see changes without flask run(just save and reload browser) 
+set FLASK_DEBUG=1
+
