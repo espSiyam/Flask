@@ -1,0 +1,1 @@
+set FLAK_APP = flaskblog.py
