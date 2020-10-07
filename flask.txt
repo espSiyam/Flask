@@ -4,6 +4,14 @@ flask run
 
 http://127.0.0.1:5000/
 
-To see changes without flask run(just save and reload browser) 
+To see changes without flask run(just save and reload browser):
 set FLASK_DEBUG=1
+
+To run the .py file without env like(FLASK_APP=flaskblog.py --> flask run):
+1.On flaskblog.py on line lines:
+ if __name__ == '__main__':
+	app.run(debug=True) 
+2.On command Lines:
+	python flaskblog.py
+
 
