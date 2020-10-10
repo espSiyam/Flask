@@ -15,3 +15,44 @@ To run the .py file without env like(FLASK_APP=flaskblog.py --> flask run):
 	python flaskblog.py
 
 
+------------------------------------------------------------------------------
+To use template, We can use render_template
+and return render_template('home.html')
+
+------------------------------------------------------------------------------
+To pass any post to our template we can use:
+	return render_template('home.html', posts = posts)
+where post:
+posts = [
+	{
+		'author': 'Sohag Ahammed Siyam',
+		'title': 'Blog post 1',
+		'content': 'First blog content',
+		'date_posted': 'April 20, 2018'
+	},
+	{
+		'author': 'Anis ul Haque',
+		'title': 'Blog post 2',
+		'content': 'Second blog content',
+		'date_posted': 'April 21, 2018'		
+	}
+]
+
+------------------------------------------------------------------------------
+
+To add title: 
+return render_template('about.html', title='About')
+
+	{% if title %}
+		<title>Flask Blog - {{ title }} </title>
+	{% else %}
+		<title>Flask Blog</title>
+	{% endif %}
+
+------------------------------------------------------------------------------
+To use external css in Flask(Url_for):
+in flaskblog.py:
+from flask import Flask , render_template, url_for
+
+In layout.html
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css')}}">
