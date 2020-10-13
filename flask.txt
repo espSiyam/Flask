@@ -57,6 +57,15 @@ from flask import Flask , render_template, url_for
 In layout.html
 <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='main.css')}}">
 
+------------------------------------------------------------------------------
+To make Registration form with Validation:
 
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
 
 
