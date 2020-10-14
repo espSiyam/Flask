@@ -1,0 +1,54 @@
+python
+from flaskblog import db
+db.create_all()
+from flaskblog import User, Post
+user_1 = User(username='Siyam', email='siyam@gmail.com', password='password')
+db.session.add(user_1)
+user_2 = User(username='Arafat', email='arafat@gmail.com', password='password')
+db.session.add(user_2)
+db.session.commit()
+
+User.query.all()
+User.query.first()
+
+User.query.filter_by(username='Arafat')
+User.query.filter_by(username='Arafat').all()
+User.query.filter_by(username='Arafat').first()
+
+user = User.query.filter_by(username='Arafat').first()
+user
+user.id
+
+user = User.query.get(1)
+user
+user.posts
+
+.....................................................................
+>>> user.id
+>>> post_1 = Post(title='Blog 1', content='First Post Content!', user_id = user.id)
+>>> post_2 = Post(title='Blog 2', content='Second Post Content!', user_id = user.id)
+>>> db.session.add(post_1)
+>>> db.session.add(post_2)
+>>> db.session.commit()
+>>> user.posts
+>>> for post in user.posts:
+...     print(post.title)
+...
+Blog 1
+Blog 2
+
+
+>>> post = Post.query.first()
+>>>
+>>> post
+Post('Blog 1', '2020-10-14 14:31:42.362636')
+>>> post.user_id
+1
+Eventhough post doesn't have author object but we get it anyhow
+due to relationship
+>>> post.author
+User('Siyam', 'siyam@gmail.com', 'default.jpg')
+.....................................................................
+To clean all previous database info:
+>>> db.drop_all()
+>>> db.create_all()
