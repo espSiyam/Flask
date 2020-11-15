@@ -14,7 +14,15 @@ To run the .py file without env like(set FLASK_APP=flaskblog.py --> flask run):
 2.On command Lines:
 	python flaskblog.py
 ------------------------------------------------------------------------------
-We can use different routes in the module
+We can use different routes in the module:
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!\nI am Siyam'
+
+@app.route('/about')
+def about():
+    return 'This is about PAGE'
 
 ------------------------------------------------------------------------------
 To use template, We can use render_template
