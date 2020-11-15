@@ -25,9 +25,10 @@ def about():
     return 'This is about PAGE'
 
 ------------------------------------------------------------------------------
-To use template, We can use render_template
+To  use template, We can use render_template
 and return render_template('home.html')
 # it will find home.html in taamplates folder and render according to that html
+
 
 ------------------------------------------------------------------------------
 To pass any post to our template we can use:
