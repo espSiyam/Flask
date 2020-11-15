@@ -3,17 +3,18 @@ set FLASK_APP=flaskblog.py
 flask run
 
 http://127.0.0.1:5000/
-
+......................................................
 To see changes without flask run(just save and reload browser):
-set FLASK_DEBUG=1
-
+set FLASK_DEBUG=1 on cmd
+........................................................... 
 To run the .py file without env like(set FLASK_APP=flaskblog.py --> flask run):
 1.On flaskblog.py on line lines:
  if __name__ == '__main__':
 	app.run(debug=True) 
 2.On command Lines:
 	python flaskblog.py
-
+------------------------------------------------------------------------------
+We can use different routes in the module
 
 ------------------------------------------------------------------------------
 To use template, We can use render_template
