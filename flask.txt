@@ -67,6 +67,33 @@ return render_template('about.html', title='About')
 	{% endif %}
 
 ------------------------------------------------------------------------------
+To access data from database(In hello.py)
+<body>
+	<h1>This is the home page</h1>
+	{% for post in posts %}
+		<h1>{{ post.title }} </h1>
+		<p>{{ post.author }} {{ post.date_posted }} </p>
+		<p>{{ post.content }} </p>
+	{% endfor %}
+</body>
+------------------------------------------------------------------------------
+To inherit common design in all routes, make layout.html
+<!DOCTYPE html>
+<html>
+<head>
+	{% if title %}
+		<title>Flask Blog - {{ title }}</title>
+	{% else %}
+		<title>Flask Blog</title>
+	{% endif %}
+	
+</head>
+<body>
+	{% block content %} {% endblock %}
+</body>
+</html>
+
+------------------------------------------------------------------------------
 To use external css in Flask(Url_for):
 in flaskblog.py:
 from flask import Flask , render_template, url_for
