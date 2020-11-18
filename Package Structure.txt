@@ -1,1 +1,19 @@
-1. Move Database models to model.py
+1. Move Database models to models.py
+
+2. In models.py 
+import from hello import db
+from datetime import datetime
+
+3.Change from hello to __main__ to stop circular error.So:
+from __main__ import db
+
+4. In hello.py move the (from models import User, Post) to down the db as our model needs to initiate db
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '0659b56c3a4fb43903d3a5035f55b7e2'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
+
+from models import User, Post
+
+..................................................................................
