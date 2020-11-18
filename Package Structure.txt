@@ -17,3 +17,37 @@ db = SQLAlchemy(app)
 from models import User, Post
 
 ..................................................................................
+This sollution is still really ugly as we have to set __main__ for our flaskblog module.
+ex. We cant create database as previous
+..................................................................................
+
+So solve this issue we have create package:
+
+1.Make a folder as same name as app(flaskblog).
+
+2.Make __inint__.py file inside that folder.
+
+3.Move all files except flaskblog.py to flaskblog folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
