@@ -101,7 +101,20 @@ if __name__ == '__main__':
 	app.run(debug=True) 
 ...........................................................................
 
-8.
+8.Move all imports to appropriate places.
+as move from flask import Flask, render_template, url_for, flash, redirect
+to routes.py
+and
+from forms import RegistrationForm, LoginForm
+
+9. As we are in package(flaskblog), we have to change some imports to flaskblog. 
+ex. 
+from flaskblog.forms import RegistrationForm, LoginForm
+from flaskblog.models import User, Post
+
+10.As in routes.py we use @app.route so we have to import app
+ex.
+from flaskblog import app
 
 
 
