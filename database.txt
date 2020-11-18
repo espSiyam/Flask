@@ -1,7 +1,39 @@
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+................................................................
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+db = SQLAlchemy(app)
+
+................................................................
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    password = db.Column(db.String(60), nullable=False)
+    posts = db.relationship('Post', backref='author', lazy=True)
+
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
+
+
+................................................................
+
 python
-from flaskblog import db
+from hello import db
 db.create_all()
-from flaskblog import User, Post
+from hello import User, Post
 user_1 = User(username='Siyam', email='siyam@gmail.com', password='password')
 db.session.add(user_1)
 user_2 = User(username='Arafat', email='arafat@gmail.com', password='password')
@@ -23,7 +55,7 @@ user = User.query.get(1)
 user
 user.posts
 
-.....................................................................
+................................................................
 >>> user.id
 >>> post_1 = Post(title='Blog 1', content='First Post Content!', user_id = user.id)
 >>> post_2 = Post(title='Blog 2', content='Second Post Content!', user_id = user.id)
@@ -48,6 +80,23 @@ Eventhough post doesn't have author object but we get it anyhow
 due to relationship
 >>> post.author
 User('Siyam', 'siyam@gmail.com', 'default.jpg')
+
+................................................................
+To clean our previous database
+
+db.drop_all()
+
+Then we can create from scrach by:
+db.create_all()
+
+Let's check now:
+
+User.query.all()
+>>>[]
+................................................................
+
+.....................................................................
+
 .....................................................................
 To clean all previous database info:
 >>> db.drop_all()
