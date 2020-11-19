@@ -177,6 +177,11 @@ login_manager.login_view = 'login'
 To make it(flashed message) look beautiful
 
 login_manager.login_message_category = 'info'
+
+If it flshes to access the link to login 
+but after login it redirects to home insted of the secreat link.SO,
+
+
 ................................................................
 
 
