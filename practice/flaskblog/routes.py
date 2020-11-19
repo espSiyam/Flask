@@ -33,7 +33,10 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
     	hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        flash(f'Account created for {form.username.data}!', 'success')
+        user = User(username=form.username.data, email=form.email.data, password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Your account has been created! You can now able to log in', 'success')
         return redirect(url_for('home'))
     return render_template('register.html', title='Register', form=form)
 
