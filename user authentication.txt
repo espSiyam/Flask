@@ -94,6 +94,49 @@ def login():
 
 ................................................................
 
+We logged in but it still shows log in in navigation bar.So,
+
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+	if current_user.is_authenticated:
+		return redirect(url_for('home'))
+................................................................
+To log out:
+
+from flask_login logout_user
+
+@app.route('/logout')
+def logout():
+	logout_user()
+	return redirect(url_for('home'))
+
+
+TO make them visible in the site, we have to change layout.html
+
+In <!-- Navigation bar --> , <!-- Navbar Right Side -->
+
+	        <div class="navbar-nav">
+	          {% if current_user.is_authenticated %}
+	          	<a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+	          {% else %}
+	          	<a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+	          	<a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+	          {% endif %}
+
+................................................................
+
+
+
+
+
+
+
 
 
 
