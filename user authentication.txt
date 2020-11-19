@@ -21,3 +21,32 @@ True
 from flask_bcrypt import Bcrypt
 then initiate Bcrypt,
 bcrypt = Bcrypt(app)
+................................................................
+3. Import db and bcrypt in routes.py
+from flaskblog import app, db, bcrypt
+
+In registration route, If form.validate_on_submit():
+				hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        			user = User(username=form.username.data, email=form.email.data, password=form.password.data)
+        			db.session.add(user)
+       				db.session.commit()
+        			flash('Your account has been created! You can now able to log in', 'success')
+................................................................
+If same user create account two times it will down our site.So we have to throw
+an error when same user wants to make more than one register.
+
+#So we have to raise validationerror:
+In forms.py import 
+from flaskblog.models import User
+from wtforms.validators import ValidationError
+
+In class RegistrationForm(FlaskForm):
+	def validate_username(self, username)
+    	user = User.query.filter_by(username=username.data).first()
+    	if user:
+        	raise ValidationError('That username is taken. Please choose another one.')
+
+................................................................
+
+
+
