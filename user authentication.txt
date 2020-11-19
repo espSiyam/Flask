@@ -173,6 +173,10 @@ def account():
 And in __init__.py:
 
 login_manager.login_view = 'login'
+
+To make it(flashed message) look beautiful
+
+login_manager.login_message_category = 'info'
 ................................................................
 
 
