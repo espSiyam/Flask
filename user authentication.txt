@@ -55,3 +55,33 @@ from wtforms.validators import ValidationError
 
 For Login using our database:
 
+In __init__.py file import:
+from flask_login import LoginManager
+login_manager = LoginManager(app)
+
+Login manager will manage sessions of models certain functionality which we'll create:
+So in models.py
+
+from flaskblog import login_manager
+from flask_login import UserMixin
+
+In the begining do:
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+and:
+
+class User(db.Model, UserMixin):
+
+................................................................
+Then go to the routes:
+
+
+
+
+
+
+
+
+
