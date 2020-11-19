@@ -180,8 +180,14 @@ login_manager.login_message_category = 'info'
 
 If it flshes to access the link to login 
 but after login it redirects to home insted of the secreat link.SO,
+TO redirect to secreat link directly:
+In routes.py
 
+from flask request
 
+	next_page = request.args.get('next')
+	return redirect(next_page) if next_page else redirect(url_for('home'))
+		
 ................................................................
 
 
