@@ -17,3 +17,7 @@ False
 >>> bcrypt.check_password_hash(hashed_pw,'testing')
 True
 ................................................................
+2. import Bcrypt in app(__init__.py)
+from flask_bcrypt import Bcrypt
+then initiate Bcrypt,
+bcrypt = Bcrypt(app)
