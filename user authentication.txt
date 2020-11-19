@@ -1,0 +1,19 @@
+1. To encrypt our password:
+python
+>>> from flask_bcrypt import Bcrypt
+>>> bcrypt = Bcrypt()
+bcrypt.generate_password_hash('testing')
+b'$2b$12$DuOoaNJ2qGYNEZZcziI7IO3UouDPayl3XBle62QivErmkEdpSgIpK' #b means this is in bytes
+
+If we want string:
+>>> bcrypt.generate_password_hash('testing').decode('utf-8')
+'$2b$12$xP47BUJeeCGoAhBSefYfEeGPWSp52TVpDJVtje3mBM325B00hwQlC'
+
+To check if our encoded password is equal to our plain text:
+hashed_pw = bcrypt.generate_password_hash('testing').decode('utf-8')
+>>> bcrypt.check_password_hash(hashed_pw,'password')
+False
+
+>>> bcrypt.check_password_hash(hashed_pw,'testing')
+True
+................................................................
