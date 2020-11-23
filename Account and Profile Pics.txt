@@ -1,2 +1,66 @@
 1. Create a folder(profile_pics) in static folder and store default.jpg image there.
 
+................................................................
+2. Open account.html and paste:
+{% extends "layout.html" %}
+{% block content %}  
+	<div class="content-section">
+	  <div class="media">
+	    <img class="rounded-circle account-img" src="{{ image_file }}">
+	    <div class="media-body">
+	      <h2 class="account-heading">{{ current_user.username }}</h2>
+	      <p class="text-secondary">{{ current_user.email }}</p>
+	    </div>
+	  </div>
+	  <!-- FORM HERE -->
+	</div>
+{% endblock content %}
+
+................................................................
+3. In forms.py import:
+from flask_login import current_user 
+
+And Paste:
+class UpdateAccountForm(FlaskForm):
+	username = StringField('Username',
+		validators = [DataRequired(), Length(min=2,max=20)])
+
+	email = StringField('Email',
+		validators=[DataRequired(), Email()])
+
+	submit = SubmitField('Update')
+
+	def validate_username(self, username):
+		if username.data != current_user.username:
+			user = User.query.filter_by(username=username.data).first()
+			if user:
+				raise ValidationError('That username is taken, please choose a different one.')
+
+	def validate_email(self, email):
+		if email.data != current_user.email:
+			user = User.query.filter_by(email=email.data).first()
+			if user:
+				raise ValidationError('That email is taken, please choose a different one.')
+................................................................
+
+4.In routes.py import:
+from flaskblog.forms UpdateAccountForm
+and paste:
+@app.route("/account")
+@login_required
+def account():
+	form = UpdateAccountForm()
+	image_file = url_for('static' ,filename='profile_pics/'+current_user.image_file)
+	return render_template('account.html', title='Account', 
+							image_file=image_file,form= form)
+................................................................
+5.Copy registration.html and paste there(It was mentioned where to paste)
+ And remove password and confirm password fields.
+
+
+
+
+
+
+
+
