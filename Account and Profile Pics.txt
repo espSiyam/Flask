@@ -1,0 +1,2 @@
+1. Create a folder(profile_pics) in static folder and store default.jpg image there.
+
