@@ -4,7 +4,17 @@
 	<title></title>
 </head>
 <body>
-	<h1>Hello: {{var1}} to laters: {{var2[0:3]}}</h1>
-	<h3>dict: {{var3['pup_name']}}</h3>
+	<ul>
+	{% for i in list %}
+		<li>{{i}}</li>
+	{% endfor %}
+	</ul>
+
+	{% if 1 in list %}
+		<p>Found 1 in the list</p>
+	{% else %}
+		<p>Not found 1 in the list</p>
+	{% endif %}
+
 </body>
 </html>
