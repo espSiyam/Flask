@@ -5,7 +5,9 @@ app = Flask(__name__)
 def index():
 
 	name = "Siyam"
-	return render_template('basic.html', var = name)
+	letters = list(name)
+	pupp = {'pup_name':'doggo'}
+	return render_template('basic.html', var1 = name, var2 = letters, var3 = pupp)
 
 if __name__ == "__main__":
 	app.run(debug=True)
