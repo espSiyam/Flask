@@ -1,9 +1,9 @@
-from flask import Flask
+from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return '<h1>Hello Puppy!</h1>'
+	return render_template('basic.html')
 
 @app.route('/info')
 def info():
