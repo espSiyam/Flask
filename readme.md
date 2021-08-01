@@ -1,0 +1,1 @@
+<img src="Landing page.JPG" alt="Paris" class="center">
