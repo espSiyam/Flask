@@ -10,3 +10,5 @@ The Features of this site is:
 - Post blog
 - Store blogs and users in database (Sql Alchemy)
 - View post per users
+
+This project is implmented by following the tutorials of corey scherer.
