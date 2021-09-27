@@ -3,7 +3,7 @@
 <img src="Landing page.JPG" alt="Paris" class="center">
 
 This code is based on the project developed by Corey Schafer and distributed under MIT license.
-The Features of this site is:
+The Features of this site are:
 - Login
 - Registration
 - Form validator
